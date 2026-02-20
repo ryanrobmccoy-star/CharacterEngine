@@ -1,192 +1,171 @@
-\documentclass[11pt]{article}
+\documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{geometry}
 \usepackage{tabularx}
-\usepackage{multicol}
-\usepackage{amssymb}
-\usepackage{tcolorbox}
 \usepackage{array}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{multicol}
 
-\geometry{margin=0.5in}
+\geometry{margin=0.35in}
 \pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.2}
+
+\definecolor{sheetbg}{HTML}{F6F2E8}
+\definecolor{sheetline}{HTML}{3A3023}
+\definecolor{sheetaccent}{HTML}{8A4D2E}
 
 \tcbset{
-    boxrule=0.8pt,
-    colback=white,
-    colframe=black,
-    arc=3pt,
-    auto outer arc,
+    enhanced,
+    colback=sheetbg,
+    colframe=sheetline,
+    boxrule=0.85pt,
+    arc=2pt,
     left=4pt,
     right=4pt,
-    top=4pt,
-    bottom=4pt
+    top=3pt,
+    bottom=3pt,
+    fonttitle=\bfseries\footnotesize,
+    coltitle=sheetaccent,
+    title style={left color=sheetbg,right color=sheetbg},
+}
+
+\newcommand{\abilitycard}[3]{
+\begin{tcolorbox}[title=#1]
+\centering
+{\Large\bfseries #2}\\[-2pt]
+{\footnotesize Modifier #3}
+\end{tcolorbox}
 }
 
 \begin{document}
 
 % ===============================
-% HEADER
+% TOP HEADER (2024 STYLE)
 % ===============================
+\begin{tcolorbox}[colback=white,title=CHARACTER,boxrule=1pt]
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X c c c}
+{\LARGE\bfseries {{ name }}} & \textbf{Level} & \textbf{Class} & \textbf{Subclass} \\
+& {{ level }} & {{ class }} & {{ subclass }} \\
+\end{tabularx}
 
-\begin{tcolorbox}
-\textbf{\Large {{ name }}}
+\vspace{3pt}
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X}
+\textbf{Background}\\ \rule{0.95\linewidth}{0.4pt} &
+\textbf{Species}\\ \rule{0.95\linewidth}{0.4pt} &
+\textbf{Alignment}\\ \rule{0.95\linewidth}{0.4pt} &
+\textbf{XP}\\ \rule{0.95\linewidth}{0.4pt}
+\end{tabularx}
+\end{tcolorbox}
 
 \vspace{4pt}
 
-\textbf{Class:} {{ class }} ({{ subclass }}) \hfill
-\textbf{Level:} {{ level }} \\
-\textbf{Background:} \rule{2in}{0.4pt} \hfill
-\textbf{Species:} \rule{1.5in}{0.4pt} \\
-\textbf{Alignment:} \rule{1.5in}{0.4pt} \hfill
-\textbf{XP:} \rule{1in}{0.4pt}
-\end{tcolorbox}
-
-\vspace{6pt}
-
 % ===============================
-% ABILITIES / SAVES / SKILLS
+% BODY LAYOUT
 % ===============================
+\begin{minipage}[t]{0.28\textwidth}
+\abilitycard{STR}{ {{ abilities.STR }} }{ {{ mods.STR }} }
+\abilitycard{DEX}{ {{ abilities.DEX }} }{ {{ mods.DEX }} }
+\abilitycard{CON}{ {{ abilities.CON }} }{ {{ mods.CON }} }
+\abilitycard{INT}{ {{ abilities.INT }} }{ {{ mods.INT }} }
+\abilitycard{WIS}{ {{ abilities.WIS }} }{ {{ mods.WIS }} }
+\abilitycard{CHA}{ {{ abilities.CHA }} }{ {{ mods.CHA }} }
 
-\begin{tabularx}{\textwidth}{X X X}
-
-% -------- ABILITY SCORES --------
-\begin{tcolorbox}[title=Ability Scores]
-
-\begin{tabular}{l c c}
-STR & {{ abilities.STR }} & ({{ mods.STR }}) \\
-DEX & {{ abilities.DEX }} & ({{ mods.DEX }}) \\
-CON & {{ abilities.CON }} & ({{ mods.CON }}) \\
-INT & {{ abilities.INT }} & ({{ mods.INT }}) \\
-WIS & {{ abilities.WIS }} & ({{ mods.WIS }}) \\
-CHA & {{ abilities.CHA }} & ({{ mods.CHA }}) \\
-\end{tabular}
-
+\begin{tcolorbox}[title=Core]
+\begin{tabularx}{\linewidth}{l r}
+Proficiency Bonus & +{{ prof_bonus }} \\
+Initiative & {{ mods.DEX }} \\
+Passive Perception & \rule{0.8in}{0.4pt} \\
+Inspiration & \rule{0.55in}{0.4pt}
+\end{tabularx}
 \end{tcolorbox}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.70\textwidth}
 
+\begin{tabularx}{\linewidth}{X X X}
+\begin{tcolorbox}[title=Armor Class]
+\centering {\Large\bfseries {{ ac }}}
+\end{tcolorbox}
 &
-% -------- SAVING THROWS --------
-\begin{tcolorbox}[title=Saving Throws]
+\begin{tcolorbox}[title=Speed]
+\centering {\Large\bfseries \rule{0.8in}{0.4pt}}
+\end{tcolorbox}
+&
+\begin{tcolorbox}[title=Hit Dice]
+\centering {\large\bfseries d{{ config.hit_die }} x {{ level }}}
+\end{tcolorbox}
+\end{tabularx}
 
-\begin{tabular}{l c}
+\begin{tabularx}{\linewidth}{X X}
+\begin{tcolorbox}[title=Hit Points]
+\textbf{Maximum:} {{ hp }}\\
+\textbf{Current:} \rule{0.78\linewidth}{0.4pt}\\
+\textbf{Temporary:} \rule{0.72\linewidth}{0.4pt}
+\end{tcolorbox}
+&
+\begin{tcolorbox}[title=Death Saves]
+\textbf{Successes} \rule{0.7\linewidth}{0.4pt}\\
+\textbf{Failures} \rule{0.73\linewidth}{0.4pt}
+\end{tcolorbox}
+\end{tabularx}
+
+\begin{tabularx}{\linewidth}{X X}
+\begin{tcolorbox}[title=Saving Throws]
+\begin{tabularx}{\linewidth}{l r}
 STR & {{ saving_throws.STR }} \\
 DEX & {{ saving_throws.DEX }} \\
 CON & {{ saving_throws.CON }} \\
 INT & {{ saving_throws.INT }} \\
 WIS & {{ saving_throws.WIS }} \\
-CHA & {{ saving_throws.CHA }} \\
-\end{tabular}
-
+CHA & {{ saving_throws.CHA }}
+\end{tabularx}
 \end{tcolorbox}
-
 &
-% -------- SKILLS --------
 \begin{tcolorbox}[title=Skills]
-
-\begin{tabular}{l c c}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}X c c}
 {% for skill, data in skills.items() %}
-{{ skill }} & {{ data.total }} & {% if data.proficient %} $\checkmark$ {% endif %} \\
+{{ skill }} & {{ data.total }} & {% if data.proficient %}$\checkmark${% endif %} \\
 {% endfor %}
-\end{tabular}
-
+\end{tabularx}
 \end{tcolorbox}
-
 \end{tabularx}
 
-\vspace{6pt}
-
-% ===============================
-% COMBAT ROW
-% ===============================
-
-\begin{tabularx}{\textwidth}{X X X X}
-
-\begin{tcolorbox}[title=Armor Class]
-\centering \Large {{ ac }}
-\end{tcolorbox}
-
-&
-\begin{tcolorbox}[title=Initiative]
-\centering \Large {{ mods.DEX }}
-\end{tcolorbox}
-
-&
-\begin{tcolorbox}[title=Speed]
-\centering \Large \rule{1in}{0.4pt}
-\end{tcolorbox}
-
-&
-\begin{tcolorbox}[title=Proficiency Bonus]
-\centering \Large +{{ prof_bonus }}
-\end{tcolorbox}
-
+\begin{tcolorbox}[title=Attacks \& Spellcasting]
+\begin{tabularx}{\linewidth}{|>{\raggedright\arraybackslash}X|c|c|}
+\hline
+\textbf{Name} & \textbf{Atk Bonus} & \textbf{Damage/Type} \\
+\hline
+\rule{0pt}{12pt} & & \\
+\hline
+\rule{0pt}{12pt} & & \\
+\hline
+\rule{0pt}{12pt} & & \\
+\hline
 \end{tabularx}
-
-\vspace{6pt}
-
-% ===============================
-% HIT POINTS
-% ===============================
-
-\begin{tabularx}{\textwidth}{X X X}
-
-\begin{tcolorbox}[title=Hit Points]
-\centering \Large {{ hp }}
-\end{tcolorbox}
-
-&
-\begin{tcolorbox}[title=Hit Dice]
-\centering \Large D{{ config.hit_die }} x {{ level }}
-\end{tcolorbox}
-
-&
-\begin{tcolorbox}[title=Death Saves]
-Successes: \rule{0.8in}{0.4pt} \\
-Failures: \rule{0.8in}{0.4pt}
-\end{tcolorbox}
-
-\end{tabularx}
-
-\vspace{6pt}
-
-% ===============================
-% SPELLCASTING
-% ===============================
-
-\begin{tcolorbox}[title=Spellcasting]
-
-Spell Save DC: {{ spell_dc }} \hfill
-Spell Attack Bonus: +{{ spell_attack }}
-
 \vspace{4pt}
+Spell Save DC: \textbf{{ spell_dc }} \hfill Spell Attack: \textbf{+{{ spell_attack }}}
+\end{tcolorbox}
 
-\textbf{Spells Known / Prepared}
+\begin{tcolorbox}[title=Features \& Traits]
+\rule{\linewidth}{1.45in}
+\end{tcolorbox}
 
-\begin{itemize}
+\begin{tcolorbox}[title=Equipment]
+\rule{\linewidth}{1.0in}
+\end{tcolorbox}
+
+\begin{tcolorbox}[title=Spells Prepared / Known]
+\begin{multicols}{2}
+\begin{itemize}[leftmargin=1.2em,itemsep=2pt]
 {% for spell in spells %}
 \item {{ spell }}
 {% endfor %}
 \end{itemize}
-
+\end{multicols}
 \end{tcolorbox}
 
-\vspace{6pt}
-
-% ===============================
-% FEATURES
-% ===============================
-
-\begin{tcolorbox}[title=Features \& Traits]
-\rule{\textwidth}{2in}
-\end{tcolorbox}
-
-\vspace{6pt}
-
-% ===============================
-% EQUIPMENT
-% ===============================
-
-\begin{tcolorbox}[title=Equipment]
-\rule{\textwidth}{1.5in}
-\end{tcolorbox}
+\end{minipage}
 
 \end{document}
