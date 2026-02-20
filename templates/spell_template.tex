@@ -1,0 +1,27 @@
+% =====================================================
+% {{ spell.name | latex }}
+% =====================================================
+
+\section*{ {{ spell.name | latex }} }
+
+{% if spell.source %}
+\textbf{ {{ spell.source | latex }} }
+
+{% endif %}
+
+{% if spell.school_line %}
+\textit{ {{ spell.school_line | latex }} }
+
+{% endif %}
+
+\textbf{Casting Time:} {{ spell.casting_time | latex }} \\
+\textbf{Range:} {{ spell.range | latex }} \\
+\textbf{Components:} {{ spell.components | latex }} \\
+\textbf{Duration:} {{ spell.duration | latex }}
+
+{% if spell.description %}
+{% for paragraph in spell.description %}
+{{ paragraph | latex }}
+
+{% endfor %}
+{% endif %}

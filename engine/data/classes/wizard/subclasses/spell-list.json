@@ -1,0 +1,198 @@
+{
+  "title": "Wizard Spell List",
+  "url": "http://dnd2024.wikidot.com/wizard:spell-list",
+  "tables": [
+    [
+      [
+        "Name",
+        "School",
+        "Spelllists",
+        "Casting Time",
+        "Range",
+        "Components",
+        "Duration"
+      ],
+      [
+        "Acid Splash",
+        "Evocation",
+        "Artificer, Sorcerer, Wizard",
+        "Action",
+        "60 feet",
+        "V, S",
+        "Instantaneous"
+      ],
+      [
+        "Blade Ward",
+        "Abjuration",
+        "Bard, Sorcerer, Warlock, Wizard",
+        "Action",
+        "Self",
+        "V, S",
+        "C , up to 1 minute"
+      ],
+      [
+        "Chill Touch",
+        "Necromancy",
+        "Sorcerer, Warlock, Wizard",
+        "Action",
+        "Touch",
+        "V, S",
+        "Instantaneous"
+      ],
+      [
+        "Dancing Lights",
+        "Illusion",
+        "Artificer, Bard, Sorcerer, Wizard",
+        "Action",
+        "120 feet",
+        "V, S, M",
+        "C , up to 1 minute"
+      ],
+      [
+        "Elementalism",
+        "Transmutation",
+        "Artificer, Druid, Sorcerer, Wizard",
+        "Action",
+        "30 feet",
+        "V, S",
+        "Instantaneous"
+      ],
+      [
+        "Fire Bolt",
+        "Evocation",
+        "Artificer, Sorcerer, Wizard",
+        "Action",
+        "120 feet",
+        "V, S",
+        "Instantaneous"
+      ],
+      [
+        "Friends",
+        "Enchantment",
+        "Bard, Sorcerer, Warlock, Wizard",
+        "Action",
+        "10 feet",
+        "S, M",
+        "C , up to 1 minute"
+      ],
+      [
+        "Light",
+        "Evocation",
+        "Artificer, Bard, Cleric, Sorcerer, Wizard",
+        "Action",
+        "Touch",
+        "V, M",
+        "1 hour"
+      ],
+      [
+        "Mage Hand",
+        "Conjuration",
+        "Artificer, Bard, Sorcerer, Warlock, Wizard",
+        "Action",
+        "30 feet",
+        "V, S",
+        "1 minute"
+      ],
+      [
+        "Mending",
+        "Transmutation",
+        "Bard, Cleric, Druid, Sorcerer, Wizard",
+        "1 minute",
+        "Touch",
+        "V, S, M",
+        "Instantaneous"
+      ],
+      [
+        "Message",
+        "Transmutation",
+        "Artificer, Bard, Druid, Sorcerer, Wizard",
+        "Action",
+        "120 feet",
+        "S, M",
+        "1 round"
+      ],
+      [
+        "Mind Sliver",
+        "Enchantment",
+        "Sorcerer, Warlock, Wizard",
+        "Action",
+        "60 feet",
+        "V",
+        "1 round"
+      ],
+      [
+        "Minor Illusion",
+        "Illusion",
+        "Bard, Sorcerer, Warlock, Wizard",
+        "Action",
+        "30 feet",
+        "S, M",
+        "1 minute"
+      ],
+      [
+        "Poison Spray",
+        "Necromancy",
+        "Artificer, Druid, Sorcerer, Warlock, Wizard",
+        "Action",
+        "30 feet",
+        "V, S",
+        "Instantaneous"
+      ],
+      [
+        "Prestidigitation",
+        "Transmutation",
+        "Artificer, Bard, Sorcerer, Warlock, Wizard",
+        "Action",
+        "10 feet",
+        "V, S",
+        "Up to 1 hour"
+      ],
+      [
+        "Ray of Frost",
+        "Evocation",
+        "Artificer, Sorcerer, Wizard",
+        "Action",
+        "60 feet",
+        "V, S",
+        "Instantaneous"
+      ],
+      [
+        "Shocking Grasp",
+        "Evocation",
+        "Artificer, Sorcerer, Wizard",
+        "Action",
+        "Touch",
+        "V, S",
+        "Instantaneous"
+      ],
+      [
+        "Thunderclap",
+        "Evocation",
+        "Artificer, Bard, Druid, Sorcerer, Warlock, Wizard",
+        "Action",
+        "Self",
+        "S",
+        "Instantaneous"
+      ],
+      [
+        "Toll the Dead",
+        "Necromancy",
+        "Cleric, Warlock, Wizard",
+        "Action",
+        "60 feet",
+        "V, S",
+        "Instantaneous"
+      ],
+      [
+        "True Strike",
+        "Divination",
+        "Artificer, Bard, Sorcerer, Warlock, Wizard",
+        "Action",
+        "Self",
+        "S, M",
+        "Instantaneous"
+      ]
+    ]
+  ],
+  "sections": []
+}

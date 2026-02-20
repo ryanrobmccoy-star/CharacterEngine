@@ -1,0 +1,192 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage{tabularx}
+\usepackage{multicol}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\usepackage{array}
+
+\geometry{margin=0.5in}
+\pagestyle{empty}
+
+\tcbset{
+    boxrule=0.8pt,
+    colback=white,
+    colframe=black,
+    arc=3pt,
+    auto outer arc,
+    left=4pt,
+    right=4pt,
+    top=4pt,
+    bottom=4pt
+}
+
+\begin{document}
+
+% ===============================
+% HEADER
+% ===============================
+
+\begin{tcolorbox}
+\textbf{\Large {{ name }}}
+
+\vspace{4pt}
+
+\textbf{Class:} {{ class }} ({{ subclass }}) \hfill
+\textbf{Level:} {{ level }} \\
+\textbf{Background:} \rule{2in}{0.4pt} \hfill
+\textbf{Species:} \rule{1.5in}{0.4pt} \\
+\textbf{Alignment:} \rule{1.5in}{0.4pt} \hfill
+\textbf{XP:} \rule{1in}{0.4pt}
+\end{tcolorbox}
+
+\vspace{6pt}
+
+% ===============================
+% ABILITIES / SAVES / SKILLS
+% ===============================
+
+\begin{tabularx}{\textwidth}{X X X}
+
+% -------- ABILITY SCORES --------
+\begin{tcolorbox}[title=Ability Scores]
+
+\begin{tabular}{l c c}
+STR & {{ abilities.STR }} & ({{ mods.STR }}) \\
+DEX & {{ abilities.DEX }} & ({{ mods.DEX }}) \\
+CON & {{ abilities.CON }} & ({{ mods.CON }}) \\
+INT & {{ abilities.INT }} & ({{ mods.INT }}) \\
+WIS & {{ abilities.WIS }} & ({{ mods.WIS }}) \\
+CHA & {{ abilities.CHA }} & ({{ mods.CHA }}) \\
+\end{tabular}
+
+\end{tcolorbox}
+
+&
+% -------- SAVING THROWS --------
+\begin{tcolorbox}[title=Saving Throws]
+
+\begin{tabular}{l c}
+STR & {{ saving_throws.STR }} \\
+DEX & {{ saving_throws.DEX }} \\
+CON & {{ saving_throws.CON }} \\
+INT & {{ saving_throws.INT }} \\
+WIS & {{ saving_throws.WIS }} \\
+CHA & {{ saving_throws.CHA }} \\
+\end{tabular}
+
+\end{tcolorbox}
+
+&
+% -------- SKILLS --------
+\begin{tcolorbox}[title=Skills]
+
+\begin{tabular}{l c c}
+{% for skill, data in skills.items() %}
+{{ skill }} & {{ data.total }} & {% if data.proficient %} $\checkmark$ {% endif %} \\
+{% endfor %}
+\end{tabular}
+
+\end{tcolorbox}
+
+\end{tabularx}
+
+\vspace{6pt}
+
+% ===============================
+% COMBAT ROW
+% ===============================
+
+\begin{tabularx}{\textwidth}{X X X X}
+
+\begin{tcolorbox}[title=Armor Class]
+\centering \Large {{ ac }}
+\end{tcolorbox}
+
+&
+\begin{tcolorbox}[title=Initiative]
+\centering \Large {{ mods.DEX }}
+\end{tcolorbox}
+
+&
+\begin{tcolorbox}[title=Speed]
+\centering \Large \rule{1in}{0.4pt}
+\end{tcolorbox}
+
+&
+\begin{tcolorbox}[title=Proficiency Bonus]
+\centering \Large +{{ prof_bonus }}
+\end{tcolorbox}
+
+\end{tabularx}
+
+\vspace{6pt}
+
+% ===============================
+% HIT POINTS
+% ===============================
+
+\begin{tabularx}{\textwidth}{X X X}
+
+\begin{tcolorbox}[title=Hit Points]
+\centering \Large {{ hp }}
+\end{tcolorbox}
+
+&
+\begin{tcolorbox}[title=Hit Dice]
+\centering \Large D{{ config.hit_die }} x {{ level }}
+\end{tcolorbox}
+
+&
+\begin{tcolorbox}[title=Death Saves]
+Successes: \rule{0.8in}{0.4pt} \\
+Failures: \rule{0.8in}{0.4pt}
+\end{tcolorbox}
+
+\end{tabularx}
+
+\vspace{6pt}
+
+% ===============================
+% SPELLCASTING
+% ===============================
+
+\begin{tcolorbox}[title=Spellcasting]
+
+Spell Save DC: {{ spell_dc }} \hfill
+Spell Attack Bonus: +{{ spell_attack }}
+
+\vspace{4pt}
+
+\textbf{Spells Known / Prepared}
+
+\begin{itemize}
+{% for spell in spells %}
+\item {{ spell }}
+{% endfor %}
+\end{itemize}
+
+\end{tcolorbox}
+
+\vspace{6pt}
+
+% ===============================
+% FEATURES
+% ===============================
+
+\begin{tcolorbox}[title=Features \& Traits]
+\rule{\textwidth}{2in}
+\end{tcolorbox}
+
+\vspace{6pt}
+
+% ===============================
+% EQUIPMENT
+% ===============================
+
+\begin{tcolorbox}[title=Equipment]
+\rule{\textwidth}{1.5in}
+\end{tcolorbox}
+
+\end{document}

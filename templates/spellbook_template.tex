@@ -1,0 +1,21 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+\section*{ {{ class_name | capitalize }} Spellbook }
+
+{% for spell in spells %}
+\input{spells_tex/{{ spell.slug }}.tex}
+
+\newpage
+{% endfor %}
+
+\end{document}

@@ -1,0 +1,67 @@
+\documentclass{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{ragged2e}
+
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt}
+
+\begin{document}
+
+% =====================================================
+% Header
+% =====================================================
+
+\section*{ {{ class_data.title | latex }} }
+
+\textbf{Source URL:} {{ class_data.url | latex }}
+
+\vspace{1em}
+
+% =====================================================
+% Core Traits Table (2 Columns, Fixed)
+% =====================================================
+
+{% if class_data.tables and class_data.tables[0] %}
+
+{\small
+\renewcommand{\arraystretch}{1.2}
+
+\begin{tabular}{|p{0.35\textwidth}|p{0.6\textwidth}|}
+\hline
+
+{% for row in class_data.tables[0][:8] %}
+{{ row[0] | latex }} & {{ row[1] | latex }} \\
+\hline
+{% endfor %}
+
+\end{tabular}
+}
+
+\vspace{1em}
+
+{% endif %}
+
+
+% =====================================================
+% Features (Level X Sections)
+% =====================================================
+
+{% if class_data.sections %}
+\subsection*{Features}
+{% for section in class_data.sections %}
+\subsubsection*{ {{ section.title | latex }} }
+
+{{ section.content | latex }}
+
+\vspace{1em}
+{% endfor %}
+{% else %}
+% No sections found
+{% endif %}
+
+\end{document}

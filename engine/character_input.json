@@ -1,0 +1,16 @@
+{
+  "name": "Aelar",
+  "class": "wizard",
+  "subclass": "evoker",
+  "level": 3,
+  "abilities": {
+    "STR": 8,
+    "DEX": 14,
+    "CON": 13,
+    "INT": 16,
+    "WIS": 12,
+    "CHA": 10
+  },
+  "skill_proficiencies": ["Arcana", "History"],
+  "spells": ["Magic Missile", "Shield", "Fireball"]
+}
